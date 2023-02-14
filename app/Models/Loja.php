@@ -14,4 +14,16 @@ class Loja extends Model
     {
         return $this->hasMany(Produto::class);
     }
+    public static function validateRequest($request)
+    {
+        if(strlen($request->nome) > 60)
+        {
+            return response()->json('Nome deve ter no máximo 60 caracteres',500);
+        }
+        if(!filter_var($request->email, FILTER_VALIDATE_EMAIL))
+        {
+            return response()->json($request->email . ' é um email inválido',500);
+        }
+        return response(200);
+    }
 }
