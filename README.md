@@ -1,66 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### Como executar o programa
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Requisitos:
 
-## About Laravel
+Git
+PHP
+Composer
+MySQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Recomendações
+Para uma melhor visualização e teste dos resultados você pode usar os seguintes programas:
+- Postman
+- Insomnia
+- Json Formatter Chrome Extension
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Passos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Crie uma pasta para receber o código fonte.
+- No console, clone o repositório através do comando:
+```git clone https://github.com/1Baldasso/Desafio-Laravel desafio-laravel```
 
-## Learning Laravel
+- Ainda no console acesse a pasta através do comando: 
+```cd desafio-laravel```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Abra a pasta através de um editor de código e acesse o arquivo .env.example e substitua os dados:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+*DB_CONNECTION=mysql*
+*DB_HOST=127.0.0.1*
+*DB_PORT=3306*
+*DB_DATABASE=laravel*
+*DB_USERNAME=root*
+*DB_PASSWORD=*
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+pelos dados do seu banco MySQL e renomeie o arquivo para .env
 
-## Laravel Sponsors
+- Baixe as dependências do projeto com o comando:
+```composer compose```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Gere um banco de dados e as tabelas através do comando:
+```php artisan migrate```
 
-### Premium Partners
+- Após todos os passos, seu programa deve estar pronto para executar.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- Sempre que precisar executar o programa, use o comando:
+```php artisan serve```
 
-## Contributing
+- Abra o seu HTTP Client e comece a utilizar as APIs
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Rotas
 
-## Code of Conduct
+# Lojas
+GET - /api/lojas
+Output Exemplo:
+[
+    {
+        "id": 1,
+        "nome": "AlocaAlo",
+        "email": "superpao52@gmail.com"
+    },
+    {
+        "id": 24,
+        "nome": "Aloca",
+        "email": "superpao@gmail.com"
+    },
+    {
+        "id": 25,
+        "nome": "Lucas Baldasso",
+        "email": "sup4erpao52@gmail.com"
+    }
+]
+GET - /api/lojas/{id}
+POST - /api/lojas 
+body: 
+{
+    'nome' : 'Superpão',
+    'email' : 'contato@superpao.com.br'
+}
+PUT - /api/lojas/{id}
+body: 
+{
+    'nome' : 'Superpão Saldanha',
+    'email' : 'contato@superpao.com.br'
+}
+DELETE - /api/lojas/{id}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Produtos
+GET - /api/produtos
+Output exemplo:
+[
+    {
+        "id": 6,
+        "nome": "Milho",
+        "valor": 2,
+        "ativo": 1,
+        "estoque": 10000,
+        "data": "14/02/2023"
+    },
+    {
+        "id": 7,
+        "nome": "Pepino",
+        "valor": 50,
+        "ativo": 1,
+        "estoque": 10000,
+        "data": "14/02/2023"
+    }
+]
+GET - /api/produtos/{id}
+POST - /api/produtos 
+body: 
+{
+    'nome' : 'Pão',
+    'valor' : '50',
+    'ativo' : '1',
+    'estoque' : '1000',
+    'loja_id' : '1'
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+}
+PUT - /api/produtos/{id}
+body: 
+{
+    'nome' : 'Leite',
+    'valor' : '538',
+    'ativo' : '1',
+    'estoque' : '512',
+    'loja_id' : '1'
+}
+DELETE - /api/produtos/{id}
