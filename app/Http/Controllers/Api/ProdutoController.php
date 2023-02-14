@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Http\Resources\ProdutoResource;
+use App\Http\Resources\ProdutoCollection;
 
 class ProdutoController extends Controller
 {
@@ -22,7 +24,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = $this->produto->all();
-        return $produtos;
+        return ProdutoCollection::collection($produtos);
     }
 
     /**

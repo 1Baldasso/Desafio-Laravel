@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exceptions\Throwable;
 use App\Models\Loja;
+use App\Http\Resources\LojaResource;
+use App\Http\Resources\LojaCollection;
 
 class LojaController extends Controller
 {
@@ -24,7 +26,7 @@ class LojaController extends Controller
     public function index()
     {
         $lojas = $this->loja->all();
-        return $lojas;
+        return LojaCollection::collection($lojas);
     }
 
     /**
@@ -58,7 +60,7 @@ class LojaController extends Controller
      */
     public function show(Loja $loja)
     {
-        return response()->json($loja->with('produtos')->get(),200);
+        return new LojaResource($loja);
     }
 
     /**
