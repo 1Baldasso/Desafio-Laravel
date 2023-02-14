@@ -41,7 +41,7 @@ class LojaController extends Controller
         try
         {
             $this->loja->create($request->all());
-            $resposta = response()->json('Registro Criado', 202);
+            $resposta = response()->json('Registro Criado', 201);
         }
         catch(\Illuminate\Database\QueryException $ex)
         {
@@ -95,7 +95,7 @@ class LojaController extends Controller
     {
         if($loja->delete())
         {
-            return response()->json('Registro' . $loja->nome . 'excluído',203);
+            return response()->json('Registro' . $loja->nome . 'excluído',200);
         }
     }
 }

@@ -16,9 +16,9 @@ class Loja extends Model
     }
     public static function validateRequest($request)
     {
-        if(strlen($request->nome) > 60)
+        if(strlen($request->nome) > 40 || strlen($request->nome) < 3)
         {
-            return response()->json('Nome deve ter no máximo 60 caracteres',500);
+            return response()->json('Nome deve ter mínimo 3 e no máximo 40 caracteres',500);
         }
         if(!filter_var($request->email, FILTER_VALIDATE_EMAIL))
         {

@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
+    private $produto;
+
+    public function __construct(Produto $produto)
+    {
+        $this->produto = $produto;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = $this->produto->all();
+        return $produtos;
     }
 
     /**
@@ -25,40 +33,55 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resposta = Produto::validateRequest($request,'create');
+        if($resposta->getStatusCode()!=200)
+            return $resposta;
+
+        $this->produto->create($request->all());
+        $resposta = response()->json('Registro Criado', 202);
+        return $resposta;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Produto $produto
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produto $produto)
     {
-        //
+        return $produto;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Produto $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produto $produto)
     {
-        //
+        $resposta = Produto::validateRequest($request);
+        if($resposta->getStatusCode()!=200)
+            return $resposta;
+
+        $produto->update($request->all());
+        $resposta = response()->json('Registro atualizado', 200);
+        return $resposta;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Produto $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Produto $produto)
     {
-        //
+        if($produto->delete())
+        {
+            return response()->json('Registro' . $produto->nome . 'excluído',200);
+        }
     }
 }
