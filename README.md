@@ -1,19 +1,19 @@
-### Como executar o programa
+# Como executar o programa
 
-# Requisitos:
+### Requisitos:
 
-Git
-PHP
-Composer
-MySQL
+- Git
+- PHP
+- Composer
+- MySQL
 
-# Recomendações
+### Recomendações
 Para uma melhor visualização e teste dos resultados você pode usar os seguintes programas:
 - Postman
 - Insomnia
 - Json Formatter Chrome Extension
 
-# Passos
+### Passos
 
 - Crie uma pasta para receber o código fonte.
 - No console, clone o repositório através do comando:
@@ -23,14 +23,14 @@ Para uma melhor visualização e teste dos resultados você pode usar os seguint
 ```cd desafio-laravel```
 
 - Abra a pasta através de um editor de código e acesse o arquivo .env.example e substitua os dados:
-
-*DB_CONNECTION=mysql*
-*DB_HOST=127.0.0.1*
-*DB_PORT=3306*
-*DB_DATABASE=laravel*
-*DB_USERNAME=root*
-*DB_PASSWORD=*
-
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
 pelos dados do seu banco MySQL e renomeie o arquivo para .env
 
 - Baixe as dependências do projeto com o comando:
@@ -48,9 +48,11 @@ pelos dados do seu banco MySQL e renomeie o arquivo para .env
 
 ## Rotas
 
-# Lojas
+### Lojas
 GET - /api/lojas
+
 Output Exemplo:
+```
 [
     {
         "id": 1,
@@ -68,24 +70,34 @@ Output Exemplo:
         "email": "sup4erpao52@gmail.com"
     }
 ]
+```
 GET - /api/lojas/{id}
+
 POST - /api/lojas 
+
 body: 
+```
 {
     'nome' : 'Superpão',
     'email' : 'contato@superpao.com.br'
 }
+```
 PUT - /api/lojas/{id}
+
 body: 
+```
 {
     'nome' : 'Superpão Saldanha',
     'email' : 'contato@superpao.com.br'
 }
+```
 DELETE - /api/lojas/{id}
 
-# Produtos
+### Produtos
 GET - /api/produtos
+
 Output exemplo:
+```
 [
     {
         "id": 6,
@@ -104,9 +116,12 @@ Output exemplo:
         "data": "14/02/2023"
     }
 ]
+```
 GET - /api/produtos/{id}
+
 POST - /api/produtos 
 body: 
+```
 {
     'nome' : 'Pão',
     'valor' : '50',
@@ -115,8 +130,10 @@ body:
     'loja_id' : '1'
 
 }
+```
 PUT - /api/produtos/{id}
 body: 
+```
 {
     'nome' : 'Leite',
     'valor' : '538',
@@ -124,4 +141,5 @@ body:
     'estoque' : '512',
     'loja_id' : '1'
 }
+```
 DELETE - /api/produtos/{id}
