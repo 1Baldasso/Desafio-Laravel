@@ -17,9 +17,11 @@ Para uma melhor visualização e teste dos resultados você pode usar os seguint
 
 - Crie uma pasta para receber o código fonte.
 - No console, clone o repositório através do comando:
+
 ```git clone https://github.com/1Baldasso/Desafio-Laravel desafio-laravel```
 
-- Ainda no console acesse a pasta através do comando: 
+- Ainda no console acesse a pasta através do comando:
+
 ```cd desafio-laravel```
 
 - Abra a pasta através de um editor de código e acesse o arquivo .env.example e substitua os dados:
@@ -34,14 +36,17 @@ DB_PASSWORD=
 pelos dados do seu banco MySQL e renomeie o arquivo para .env
 
 - Baixe as dependências do projeto com o comando:
+
 ```composer compose```
 
 - Gere um banco de dados e as tabelas através do comando:
+
 ```php artisan migrate```
 
 - Após todos os passos, seu programa deve estar pronto para executar.
 
 - Sempre que precisar executar o programa, use o comando:
+
 ```php artisan serve```
 
 - Abra o seu HTTP Client e comece a utilizar as APIs
