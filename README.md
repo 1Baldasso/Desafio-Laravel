@@ -135,6 +135,7 @@ Output exemplo:
 GET - /api/produtos/{id}
 
 POST - /api/produtos 
+
 body: 
 ```
 {
@@ -147,6 +148,7 @@ body:
 }
 ```
 PUT - /api/produtos/{id}
+
 body: 
 ```
 {
